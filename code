@@ -1,0 +1,45 @@
+#include <fstream>
+
+using namespace std;
+
+int nrDiv(int n)
+{
+    int d, nrdiv = 0;
+    
+    for(d = 1; d * d <= n; d ++)
+    {
+        if(n % d == 0)
+        {
+            nrdiv += 2;
+        }
+        
+        if(d * d == n)
+        {
+            nrdiv --;   
+        }
+    }
+    
+    return nrdiv;
+}
+
+int main()
+{
+    int n, i, k, a;
+    
+    ifstream fin("divk.in");
+    ofstream fout("divk.out");
+    
+    fin >> n >> k;
+    
+    for(i = 1; i <= n; i ++)
+    {
+        fin >> a;
+        
+        if(nrDiv(a) >= k)
+        {
+            fout << a << " ";
+        }
+    }
+
+    return 0;
+}
